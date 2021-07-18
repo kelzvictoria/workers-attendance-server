@@ -17,6 +17,11 @@ const AttendanceSchema = new Schema({
         type: String,
         required: true,
         unique: true,
+    },
+
+    worker_details: {
+        type: Object,
+        default: []
     }
 });
 
