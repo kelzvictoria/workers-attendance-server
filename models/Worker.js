@@ -35,6 +35,12 @@ const WorkerSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  date_modified: {
+    type: Date,
+  },
+  modifier: {
+    type: String,
+  },
 });
 
 module.exports = Worker = mongoose.model("worker", WorkerSchema);

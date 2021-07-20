@@ -2,11 +2,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AttendanceSchema = new Schema({
-
     date_created: {
         type: Date,
         default: Date.now,
         // required: true,
+    },
+    date_modified: {
+        type: Date,
+    },
+    modifier: {
+        type: String,
     },
     user_id: {
         type: String,
@@ -21,7 +26,7 @@ const AttendanceSchema = new Schema({
 
     worker_details: {
         type: Object,
-        default: []
+        required: true
     }
 });
 

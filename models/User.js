@@ -22,7 +22,17 @@ const UserSchema = new Schema({
   role: {
     type: Array,
     required: true
-  }
+  },
+  date_created: {
+    type: Date,
+    default: Date.now,
+  },
+  date_modified: {
+    type: Date,
+  },
+  modifier: {
+    type: String,
+  },
 });
 
 module.exports = User = mongoose.model("user", UserSchema);

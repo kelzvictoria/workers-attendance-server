@@ -18,11 +18,11 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", auth, (req, res) => {
-    const { date_created, user_id, worker_id } = req.body;
+    const { date_created, user_id, worker_id, worker_details } = req.body;
 
-    if (!user_id || !worker_id) {
+    if (!user_id || !worker_id || !worker_details) {
         return res.status(400).json({
-            msg: "Date Created, User ID and Worker ID are required.",
+            msg: "Date Created, User ID, Worker ID and Worker Details are required.",
         });
     }
 
@@ -33,7 +33,7 @@ router.post("/", auth, (req, res) => {
             });
 
         const newAttendance = new Attendance({
-            date_created, user_id, worker_id
+            date_created, user_id, worker_id, worker_details
         });
 
         newAttendance.save().then((attendance) => res.json(attendance));

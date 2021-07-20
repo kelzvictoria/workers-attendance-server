@@ -8,6 +8,12 @@ const MinistryArmSchema = new Schema({
         default: Date.now,
         // required: true,
     },
+    date_modified: {
+        type: Date,
+    },
+    modifier: {
+        type: String,
+    },
     user_id: {
         type: String,
         required: true
