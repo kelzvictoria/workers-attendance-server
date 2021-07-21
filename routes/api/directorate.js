@@ -26,7 +26,7 @@ router.post("/", auth, (req, res) => {
         });
     }
 
-    Directorate.findOne({ director }).then((directorate) => {
+    Directorate.findOne({ name }).then((directorate) => {
         if (directorate)
             return res.status(400).json({
                 msg: "Directorate has already been added!",
