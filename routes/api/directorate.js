@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", auth, (req, res) => {
-    const { name, director, user_id } = req.body;
+    const { name, director, user_id, director_details } = req.body;
 
     if (!name || !director || !user_id) {
         return res.status(400).json({
@@ -33,7 +33,7 @@ router.post("/", auth, (req, res) => {
             });
 
         const newDirectorate = new Directorate({
-            name, director, user_id
+            name, director, user_id, director_details
         });
 
         newDirectorate.save().then((directorate) => res.json(directorate));

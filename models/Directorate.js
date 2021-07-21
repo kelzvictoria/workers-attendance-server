@@ -27,6 +27,10 @@ const DirectorateSchema = new Schema({
     director: {
         type: String,
         required: true,
+    },
+    director_details: {
+        type: Object,
+        required: true
     }
 });
 
