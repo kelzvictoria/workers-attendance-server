@@ -30,7 +30,10 @@ const WorkerSchema = new Schema({
     type: String,
     unique: true,
   },
-
+  user_id: {
+    type: String,
+    required: true
+  },
   date_created: {
     type: Date,
     default: Date.now,

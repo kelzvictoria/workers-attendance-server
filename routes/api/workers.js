@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", auth, (req, res) => {
-  const { first_name, last_name, middle_name, phone_num, ministry_arm, email_address, role } = req.body;
+  const { first_name, last_name, middle_name, phone_num, ministry_arm, email_address, role, user_id } = req.body;
 
   if (!first_name || !last_name || !middle_name || !phone_num) {
     return res.status(400).json({
@@ -39,7 +39,8 @@ router.post("/", auth, (req, res) => {
       phone_num,
       ministry_arm,
       role,
-      email_address
+      email_address,
+      user_id
     });
 
     newWorker.save().then((worker) => res.json(worker));
