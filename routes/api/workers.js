@@ -26,7 +26,7 @@ router.post("/", auth, (req, res) => {
     });
   }
 
-  Worker.findOne({ phone_num }).then((worker) => {
+  Worker.findOne({ phone_num, email_address }).then((worker) => {
     if (worker)
       return res.status(400).json({
         msg: "Worker already exists",
