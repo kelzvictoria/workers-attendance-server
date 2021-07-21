@@ -20,7 +20,7 @@ const WorkerSchema = new Schema({
   },
   ministry_arm: {
     type: Array,
-    required: true
+    // required: true
   },
   role: {
     type: Array,

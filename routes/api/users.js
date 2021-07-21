@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
     User.findOne({ username }).then((acc) => {
       if (acc)
         return res.status(400).json({
-          msg: "This Email already exists",
+          msg: "This Username already exists",
         });
       // console.log("acc", acc);
     })
