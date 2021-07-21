@@ -33,7 +33,7 @@ router.post("/", auth, (req, res) => {
             });
 
         const newMinistryArm = new MinistryArm({
-            user_id, name, directorate_id, ministry_head
+            user_id, name, directorate_id, ministry_head, ministry_head_details, directorate_details
         });
 
         newMinistryArm.save().then((ministry_arm) => res.json(ministry_arm));
