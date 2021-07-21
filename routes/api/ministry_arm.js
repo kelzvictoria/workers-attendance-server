@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", auth, (req, res) => {
-    const { date_created, user_id, name, directorate_id, ministry_head } = req.body;
+    const { date_created, user_id, name, directorate_id, ministry_head, ministry_head_details, directorate_details } = req.body;
 
     if (!name || !directorate_id || !ministry_head || !user_id) {
         return res.status(400).json({
