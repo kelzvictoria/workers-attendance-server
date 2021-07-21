@@ -20,7 +20,9 @@ router.get("/:id", (req, res) => {
 router.post("/", auth, (req, res) => {
   const { first_name, last_name, middle_name, phone_num, ministry_arm, email_address, role, user_id } = req.body;
 
-  if (!first_name || !last_name || !middle_name || !phone_num || !user_id) {
+  if (!first_name || !last_name
+    //|| !middle_name || !phone_num 
+    || !user_id) {
     return res.status(400).json({
       msg: "First Name, Last Name, Middle Name, User ID and Phone Num are required.",
     });
