@@ -28,26 +28,30 @@ router.post("/", auth, (req, res) => {
     });
   }
 
-  Worker.findOne({ phone_num, email_address }).then((worker) => {
+  if (phone_num || email_address) {
+    Worker.findOne({ phone_num, email_address }).then((worker) => {
 
-    if (worker && phone_num || worker && email_address)
-      return res.status(400).json({
-        msg: "Worker already exists",
+      if (worker) {
+        return res.status(400).json({
+          msg: "Worker already exists",
+        });
+      }
+
+      const newWorker = new Worker({
+        first_name,
+        last_name,
+        middle_name,
+        phone_num,
+        ministry_arm,
+        role,
+        email_address,
+        user_id
       });
 
-    const newWorker = new Worker({
-      first_name,
-      last_name,
-      middle_name,
-      phone_num,
-      ministry_arm,
-      role,
-      email_address,
-      user_id
+      newWorker.save().then((worker) => res.json(worker));
     });
+  }
 
-    newWorker.save().then((worker) => res.json(worker));
-  });
 });
 
 router.put("/:id", async (req, res) => {
