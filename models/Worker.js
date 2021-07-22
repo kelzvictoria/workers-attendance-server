@@ -16,7 +16,7 @@ const WorkerSchema = new Schema({
   phone_num: {
     type: String,
     // required: true,
-    unique: true,
+    // unique: true,
   },
   ministry_arm: {
     type: Array,
@@ -28,7 +28,7 @@ const WorkerSchema = new Schema({
   },
   email_address: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   user_id: {
     type: String,
