@@ -51,6 +51,7 @@ router.post("/", auth, (req, res) => {
       newWorker.save().then((worker) => res.json(worker));
     });
   } else {
+
     const newWorker = new Worker({
       first_name,
       last_name,
@@ -63,7 +64,6 @@ router.post("/", auth, (req, res) => {
     });
 
     newWorker.save().then((worker) => res.json(worker));
-  });
   }
 
 });
