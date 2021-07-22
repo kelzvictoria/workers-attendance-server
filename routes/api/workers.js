@@ -50,6 +50,20 @@ router.post("/", auth, (req, res) => {
 
       newWorker.save().then((worker) => res.json(worker));
     });
+  } else {
+    const newWorker = new Worker({
+      first_name,
+      last_name,
+      middle_name,
+      phone_num,
+      ministry_arm,
+      role,
+      email_address,
+      user_id
+    });
+
+    newWorker.save().then((worker) => res.json(worker));
+  });
   }
 
 });
