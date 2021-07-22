@@ -15,7 +15,7 @@ const WorkerSchema = new Schema({
   },
   phone_num: {
     type: String,
-    required: true,
+    // required: true,
     unique: true,
   },
   ministry_arm: {

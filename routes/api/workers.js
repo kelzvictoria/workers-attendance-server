@@ -24,7 +24,7 @@ router.post("/", auth, (req, res) => {
     //|| !middle_name || !phone_num 
     || !user_id) {
     return res.status(400).json({
-      msg: "First Name, Last Name, Middle Name, User ID and Phone Num are required.",
+      msg: "First Name, Last Name are required.",
     });
   }
 
