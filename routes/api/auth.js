@@ -7,14 +7,26 @@ const auth = require("../../middleware/auth");
 const User = require("../../models/User");
 
 router.post("/", (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, role } = req.body;
 
-  if (!username || !password) {
+  if (!username) {
     return res.status(400).json({
       success: false,
-      msg: "Please enter all fields",
+      msg: "Username is required",
     });
   }
+
+  if (!password) {
+    return res.status(400).json({
+      msg: "Password is required",
+    });
+  }
+
+  // if (!role) {
+  //   return res.status(400).json({
+  //     msg: "Role is required",
+  //   });
+  // }
 
   User.findOne({ username }).then((user) => {
     if (!user)

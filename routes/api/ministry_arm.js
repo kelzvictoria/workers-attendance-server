@@ -26,11 +26,53 @@ router.post("/", auth, (req, res) => {
         ministry_head_details,
         directorate_details } = req.body;
 
-    if (!name || !directorate_id || !ministry_head || !user_id) {
+    if (!name) {
         return res.status(400).json({
-            msg: "Name, Ministry Head and Directorate are required.",
+            msg: "Name is required.",
         });
     }
+
+    if (!directorate_id) {
+        return res.status(400).json({
+            msg: "Directorate ID is required",
+        });
+    }
+
+    if (!ministry_head) {
+        return res.status(400).json({
+            msg: "Ministry Head is required",
+        });
+    }
+
+    if (!user_id) {
+        return res.status(400).json({
+            msg: "User ID is required",
+        });
+    }
+
+    if (!directorate_details) {
+        return res.status(400).json({
+            msg: "Directorate Details is required",
+        });
+    }
+
+    if (!ministry_head) {
+        return res.status(400).json({
+            msg: "Ministry Head is required",
+        });
+    }
+
+    if (!ministry_head_details) {
+        return res.status(400).json({
+            msg: "Ministry Head Details is required",
+        });
+    }
+
+    // if (!) {
+    //     return res.status(400).json({
+    //       msg: " is required",
+    //     });
+    //   }
 
     MinistryArm.findOne({ name }).then((ministry_arm) => {
         if (ministry_arm)

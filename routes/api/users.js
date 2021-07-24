@@ -23,12 +23,31 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
   const { username, password, role } = req.body;
-  //console.log(username, email, password, role);
-  if (!username || !password || !role) {
+
+  if (!username) {
     return res.status(400).json({
-      msg: "Please enter all fields",
+      msg: "Username is required",
     });
   }
+
+  if (!password) {
+    return res.status(400).json({
+      msg: "Password is required",
+    });
+  }
+
+  if (!role) {
+    return res.status(400).json({
+      msg: "User role is required",
+    });
+  }
+
+
+  // if (!) {
+  //   return res.status(400).json({
+  //     msg: "",
+  //   });
+  // }
 
   User.findOne({ username }).then((user) => {
     if (user)

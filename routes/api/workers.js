@@ -20,13 +20,35 @@ router.get("/:id", (req, res) => {
 router.post("/", auth, (req, res) => {
   const { first_name, last_name, middle_name, phone_num, ministry_arm, email_address, role, user_id } = req.body;
 
-  if (!first_name || !last_name
-    //|| !middle_name || !phone_num 
-    || !user_id) {
+  if (!first_name || !last_name || !user_id) {
     return res.status(400).json({
-      msg: "First Name, Last Name are required.",
+      msg: "First Name is required.",
     });
   }
+
+  if (!last_name) {
+    return res.status(400).json({
+      msg: "Last Name is required.",
+    });
+  }
+
+  if (!user_id) {
+    return res.status(400).json({
+      msg: "User ID is required.",
+    });
+  }
+
+  if (!role) {
+    return res.status(400).json({
+      msg: "Role is required",
+    });
+  }
+
+  // if (!) {
+  //     return res.status(400).json({
+  //       msg: " is required",
+  //     });
+  //   }
 
   if (phone_num || email_address) {
     Worker.findOne({ phone_num, email_address }).then((worker) => {

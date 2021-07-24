@@ -20,11 +20,29 @@ router.get("/:id", (req, res) => {
 router.post("/", auth, (req, res) => {
     const { name, director, user_id, director_details } = req.body;
 
-    if (!name || !director || !user_id) {
+    if (!name) {
         return res.status(400).json({
-            msg: "Directorate Name and Director are required.",
+            msg: "Name is required.",
         });
     }
+
+    if (!director) {
+        return res.status(400).json({
+            msg: "Director is required",
+        });
+    }
+
+    if (!user_id) {
+        return res.status(400).json({
+            msg: "User ID is required",
+        });
+    }
+
+    // if (!) {
+    //     return res.status(400).json({
+    //       msg: " is required",
+    //     });
+    //   }
 
     Directorate.findOne({ name }).then((directorate) => {
         if (directorate)
