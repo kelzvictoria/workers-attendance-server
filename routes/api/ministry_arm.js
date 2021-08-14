@@ -38,11 +38,11 @@ router.post("/", auth, (req, res) => {
         });
     }
 
-    if (!ministry_head) {
-        return res.status(400).json({
-            msg: "Ministry Head is required",
-        });
-    }
+    // if (!ministry_head) {
+    //     return res.status(400).json({
+    //         msg: "Ministry Head is required",
+    //     });
+    // }
 
     if (!user_id) {
         return res.status(400).json({
@@ -56,17 +56,17 @@ router.post("/", auth, (req, res) => {
         });
     }
 
-    if (!ministry_head) {
-        return res.status(400).json({
-            msg: "Ministry Head is required",
-        });
-    }
+    // if (!ministry_head) {
+    //     return res.status(400).json({
+    //         msg: "Ministry Head is required",
+    //     });
+    // }
 
-    if (!ministry_head_details) {
-        return res.status(400).json({
-            msg: "Ministry Head Details is required",
-        });
-    }
+    // if (!ministry_head_details) {
+    //     return res.status(400).json({
+    //         msg: "Ministry Head Details is required",
+    //     });
+    // }
 
     // if (!) {
     //     return res.status(400).json({
