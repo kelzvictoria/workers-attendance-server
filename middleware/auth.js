@@ -17,6 +17,9 @@ function auth(req, res, next) {
 
     //Add user from payload
     req.user = decoded;
+    req.headers["Content-type"] = "application/json";
+    req.headers["Access-Control-Allow-Origin"] = "*";
+
     next();
   } catch (e) {
     res.status(400).json({ msg: "token is not valid" });
