@@ -21,7 +21,7 @@ const AttendanceSchema = new Schema({
     worker_id: {
         type: String,
         required: true,
-        unique: true,
+        // unique: true,
     },
 
     worker_details: {
