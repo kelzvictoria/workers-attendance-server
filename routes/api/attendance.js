@@ -106,8 +106,9 @@ router.post("/", auth, (req, res) => {
         let today = new Date().toISOString().split("T")[0];
 
         if (attendance) {
-            console.log("attendance.date_created", attendance.date_created);
-            if (attendance.date_created.split("T")[0] === today) {
+            let dc = attendance.date_created;
+            console.log("dc", dc);
+            if (dc.split("T")[0] === today) {
                 return res.status(400).json({
                     msg: "Worker has already been marked present!",
                 });
