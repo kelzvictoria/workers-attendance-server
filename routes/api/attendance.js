@@ -104,12 +104,14 @@ router.post("/", auth, (req, res) => {
 
     Attendance.findOne({ worker_id }).then((attendance) => {
         let today = new Date().toISOString().split("T")[0];
-        console.log("attendance", attendance);
-        if (attendance && attendance.date_created.split("T")[0] === today)
-
+        console.log("attendance.date_created", attendance.date_created);
+        if (attendance && attendance.date_created.split("T")[0] === today) {
             return res.status(400).json({
                 msg: "Worker has already been marked present!",
             });
+        }
+
+
 
         const newAttendance = new Attendance({
             date_created, user_id, worker_id, worker_details
