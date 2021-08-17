@@ -49,7 +49,8 @@ router.post("/", auth, (req, res) => {
     const field_keys = fields.map(f => f.id);
     console.log("field_keys", field_keys);
 
-    const { date_created,
+    const {
+        date_created,
         modified,
         modifier,
         user_id,
@@ -74,53 +75,26 @@ router.post("/", auth, (req, res) => {
             msg: "Worker Details is required.",
         });
     }
-    /*for (let i = 0; i < field_keys.length; i++) {
-        let in_consid = field_keys[i];
-        let is_empty = !req.body[field_keys[i]] ? true : false;
-        console.log("in_consid",
-            in_consid,
-            "field_keys[i]",
-            field_keys[i],
-            "is_empty",
-            is_empty
-        );
-        switch (req.body[field_keys[i]]) {
-            case is_empty:
-                return res.status(400).json({
-                    msg: `${fields[i].name} is required.`,
-                });
-            default:
-                return res.status(400).json({
-                    msg: "Date Created, User ID, Worker ID and Worker Details are required.",
-                });
-        }
-    } */
+    Attendance.find({ worker_id }).then((attendance) => {
+        console.log("attendance", attendance);
+        let today = new Date().toISOString().split("T")[0];
 
-    // if (!user_id || !worker_id || !worker_details) {
-    //     return res.status(400).json({
-    //         msg: "Date Created, User ID, Worker ID and Worker Details are required.",
-    //     });
-    // }
-
-    Attendance.findOne({ worker_id }).then((attendance) => {
-        let today = new Date().toISOString();
-
-        if (attendance) {
-            let dc = attendance.date_created;
-            console.log("dc", dc);
+        if (attendance.length > 0) {
+            let dc = attendance[attendance.length - 1].date_created.toISOString().split("T")[0];
+            console.log("dc", dc, "today", today);
             if (dc === today) {
                 return res.status(400).json({
                     msg: "Worker has already been marked present!",
                 });
             }
 
+        } else {
+            const newAttendance = new Attendance({
+                date_created, user_id, worker_id, worker_details
+            });
+            newAttendance.save().then((attendance) => res.json(attendance));
         }
 
-        const newAttendance = new Attendance({
-            date_created, user_id, worker_id, worker_details
-        });
-
-        newAttendance.save().then((attendance) => res.json(attendance));
     });
 });
 
