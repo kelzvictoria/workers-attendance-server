@@ -7,8 +7,8 @@ var cors = require("cors");
 
 require("dotenv").config();
 
-const users = require("./routes/api/users");
 const auth = require("./routes/api/auth");
+const users = require("./routes/api/users");
 const attendance = require("./routes/api/attendance");
 const directorate = require("./routes/api/directorate");
 const ministry_arm = require("./routes/api/ministry_arm");
