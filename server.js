@@ -14,6 +14,7 @@ const directorate = require("./routes/api/directorate");
 const ministry_arm = require("./routes/api/ministry_arm");
 const workers = require("./routes/api/workers");
 const camp = require("./routes/api/camp");
+const camp_reg = require("./routes/api/camp_reg");
 
 const app = express();
 app.use(cors());
@@ -60,5 +61,6 @@ app.use("/api/directorates", directorate);
 app.use("/api/ministry_arms", ministry_arm);
 app.use("/api/workers", workers);
 app.use("/api/camp", camp);
+app.use("/api/camp_reg", camp_reg);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
