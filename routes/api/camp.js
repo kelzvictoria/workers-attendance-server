@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", auth, (req, res) => {
   const field_keys = fields.map((f) => f.id);
-  console.log("field_keys", field_keys);
+  // console.log("field_keys", field_keys);
 
   const {
     date_created,
@@ -77,6 +77,9 @@ router.post("/", auth, (req, res) => {
     console.log("attendance", attendance);
     let today = new Date().toISOString().split("T")[0];
     let dc;
+
+    //    console.log("dc", dc);
+    //  console.log("today", today);
     if (attendance.length > 0) {
       dc = attendance[attendance.length - 1].date_created
         .toISOString()
